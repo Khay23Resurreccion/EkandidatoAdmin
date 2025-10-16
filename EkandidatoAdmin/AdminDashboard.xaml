@@ -341,10 +341,8 @@
                     </Grid>
 
                     <!-- 6 menu buttons -->
-                    <Button Text="🏠  Home"           BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding HomeCommand}"/>
-                    <Button Text="📅  Election Calendar" BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding ElectionCalendarCommand}"/>
-                    <Button Text="📊  Poll History"   BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding PollHistoryCommand}"/>
-                    <Button Text="💬  Public Wall Opinion" BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding PublicWallCommand}"/>
+                    <Button Text="🏠  Dashboard"           BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding HomeCommand}"/>
+                    <Button Text="📊  Compare Candidates"   BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding PollHistoryCommand}"/>
                     <Button Text="👤  Profile"         BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding ProfileCommand}"/>
                     <Button Text="ℹ️  About Us"       BackgroundColor="#F4F7F6" TextColor="{StaticResource DarkText}" CornerRadius="14" Command="{Binding AboutUsCommand}"/>
                 </VerticalStackLayout>
