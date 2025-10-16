@@ -336,7 +336,7 @@
                     Shadow="{StaticResource CardShadow}">
                 <VerticalStackLayout Spacing="10">
                     <Grid ColumnDefinitions="*,Auto" Padding="0,4,0,12">
-                        <Label Text="EKANDIDAT🗳️" FontAttributes="Bold" FontSize="18" TextColor="{StaticResource DarkText}"/>
+                        <Label Text="EKANDIDATO🗳️" FontAttributes="Bold" FontSize="18" TextColor="{StaticResource DarkText}"/>
                         <Button Grid.Column="1" Text="✕" BackgroundColor="Transparent" TextColor="{StaticResource DarkText}" Clicked="ToggleDrawerClicked"/>
                     </Grid>
 

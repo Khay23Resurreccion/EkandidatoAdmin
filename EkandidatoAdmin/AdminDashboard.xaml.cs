@@ -3,11 +3,11 @@ using Microsoft.Maui.Graphics;
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using Microsoft.Maui.ApplicationModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Input;
-using Microsoft.Maui.ApplicationModel;
 using System.Threading.Tasks;
 
 namespace EkandidatoAdmin;
@@ -18,6 +18,11 @@ public partial class AdminDashboard : ContentPage
     public AdminDashboardVm VM { get; } = new();
 
     bool _drawerOpen;
+
+    BoxView? BackdropView => this.FindByName<BoxView>("Backdrop");
+    Grid? DrawerHostView => this.FindByName<Grid>("DrawerHost");
+    Border? DrawerPanelView => this.FindByName<Border>("DrawerPanel");
+
 
     public AdminDashboard()
     {
@@ -48,7 +53,7 @@ public partial class AdminDashboard : ContentPage
     }
 
 
- // ===== Drawer handlers =====
+    // ===== Drawer handlers =====
     async void ToggleDrawerClicked(object? sender, EventArgs e)
     {
         if (_drawerOpen) await CloseDrawerAsync();
@@ -62,36 +67,45 @@ public partial class AdminDashboard : ContentPage
 
     Task OpenDrawerAsync()
     {
+        var host = DrawerHostView;
+        var panel = DrawerPanelView;
+        var backdrop = BackdropView;
+        if (host is null || panel is null || backdrop is null)
+            return Task.CompletedTask; // XAML not ready yet
+
         _drawerOpen = true;
 
-        // ensure visible and start off-screen
-        DrawerHost.IsVisible = true;
-        Backdrop.Opacity = 0;
+        host.IsVisible = true;
+        backdrop.Opacity = 0;
 
-        // if Width isn't measured yet, fall back to requested width (260)
-        var panelWidth = DrawerPanel.Width > 0 ? DrawerPanel.Width : 260;
-        DrawerPanel.TranslationX = -panelWidth;
+        var width = panel.Width > 0 ? panel.Width : 260;
+        panel.TranslationX = -width;
 
-        var slide = DrawerPanel.TranslateTo(0, 0, 220, Easing.CubicOut);
-        var fade = Backdrop.FadeTo(1.0, 220, Easing.CubicOut);
+        var slide = panel.TranslateTo(0, 0, 220, Easing.CubicOut);
+        var fade = backdrop.FadeTo(1.0, 220, Easing.CubicOut);
         return Task.WhenAll(slide, fade);
     }
 
     Task CloseDrawerAsync()
     {
+        var host = DrawerHostView;
+        var panel = DrawerPanelView;
+        var backdrop = BackdropView;
+        if (host is null || panel is null || backdrop is null)
+            return Task.CompletedTask;
+
         _drawerOpen = false;
 
-        var panelWidth = DrawerPanel.Width > 0 ? DrawerPanel.Width : 260;
-        var slide = DrawerPanel.TranslateTo(-panelWidth, 0, 180, Easing.CubicIn);
-        var fade = Backdrop.FadeTo(0.0, 180, Easing.CubicIn);
+        var width = panel.Width > 0 ? panel.Width : 260;
+        var slide = panel.TranslateTo(-width, 0, 180, Easing.CubicIn);
+        var fade = backdrop.FadeTo(0.0, 180, Easing.CubicIn);
 
         return Task.WhenAll(slide, fade).ContinueWith(_ =>
         {
-            MainThread.BeginInvokeOnMainThread(() => DrawerHost.IsVisible = false);
+            MainThread.BeginInvokeOnMainThread(() => host.IsVisible = false);
         });
     }
 }
-
 
 /* =====================  VIEWMODEL  ===================== */
 
