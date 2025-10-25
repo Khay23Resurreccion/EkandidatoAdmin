@@ -15,6 +15,10 @@ namespace EkandidatoAdmin;
 
 public partial class AdminDashboard : ContentPage
 {
+    private int _totalStudents;
+    private int _votesCast;
+    private int _totalCandidates;
+
     public AdminDashboardVm VM { get; } = new();
 
     bool _drawerOpen;
@@ -71,7 +75,7 @@ public partial class AdminDashboard : ContentPage
         var panel = DrawerPanelView;
         var backdrop = BackdropView;
         if (host is null || panel is null || backdrop is null)
-            return Task.CompletedTask; // XAML not ready yet
+            return Task.CompletedTask; 
 
         _drawerOpen = true;
 
@@ -220,6 +224,7 @@ public class AdminDashboardVm : BindableObject
             MarkEventDots();
             OnPropertyChanged(nameof(SelectedDateLabel));
         });
+
 
         // Init
         RebuildMonth();

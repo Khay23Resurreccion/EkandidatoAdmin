@@ -72,6 +72,57 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="16" Spacing="12">
 
+                <!-- ======= KPI Cards (NEW) ======= -->
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,2,0,8">
+
+                    <!-- Total Students -->
+                    <Border Style="{StaticResource Card}">
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label Text="Total Students"
+                     FontSize="12"
+                     TextColor="{StaticResource MutedText}"
+                     VerticalOptions="End"/>
+                            <Label Grid.Row="1"
+                     Text="{Binding TotalStudents}"
+                     FontSize="28"
+                     FontAttributes="Bold"
+                     TextColor="{StaticResource DarkText}"
+                     VerticalOptions="Start"/>
+                            <!-- small icon on the right -->
+                            <Label Grid.Column="1" Grid.RowSpan="2"
+                     Text="👥"
+                     FontSize="26"
+                     TextColor="#1E88E5"
+                     VerticalOptions="Center"
+                     HorizontalOptions="End"/>
+                        </Grid>
+                    </Border>
+
+                    <!-- Votes Cast -->
+                    <Border Grid.Column="1" Style="{StaticResource Card}">
+                        <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*,Auto">
+                            <Label Text="Votes Cast"
+                     FontSize="12"
+                     TextColor="{StaticResource MutedText}"
+                     VerticalOptions="End"/>
+                            <Label Grid.Row="1"
+                     Text="{Binding VotesCast}"
+                     FontSize="28"
+                     FontAttributes="Bold"
+                     TextColor="{StaticResource DarkText}"
+                     VerticalOptions="Start"/>
+                            <!-- small icon on the right -->
+                            <Label Grid.Column="1" Grid.RowSpan="2"
+                     Text="✅"
+                     FontSize="24"
+                     TextColor="#2E7D32"
+                     VerticalOptions="Center"
+                     HorizontalOptions="End"/>
+                        </Grid>
+                    </Border>
+
+                </Grid>
+
                 <!-- ======= Analytics Cards ======= -->
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
                     <Border Style="{StaticResource Card}">
