@@ -74,6 +74,9 @@
 	  <MauiXaml Update="AddNewCandidates.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="AdminProfile.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="VotingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
