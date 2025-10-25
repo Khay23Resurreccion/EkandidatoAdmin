@@ -69,7 +69,7 @@
                 <Label Text="PRESIDENT" Style="{StaticResource SectionHeader}"/>
                 <CollectionView ItemsSource="{Binding President}" SelectionMode="None">
                     <CollectionView.ItemsLayout>
-                        <!-- FIX: use GridItemsLayout instead of VerticalGridItemsLayout -->
+                        
                         <GridItemsLayout Orientation="Vertical" Span="1"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
@@ -264,13 +264,14 @@
                     </Grid>
                 </Border>
 
+                <!-- SUBMIT -->
                 <Button Text="SUBMIT VOTE"
                         BackgroundColor="{StaticResource PrimaryGreen}"
                         TextColor="White"
                         CornerRadius="10"
                         Padding="20,12"
-                        Command="{Binding SubmitVoteCommand}"
-                        IsEnabled="{Binding IsReady}"/>
+                        IsEnabled="{Binding IsReady}"
+                        Clicked="SubmitVote_Clicked"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
